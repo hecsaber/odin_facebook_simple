@@ -1,7 +1,28 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <%= post.description %>
+      <p><strong><%= post.description %></strong></p>
+      <p><%= post.user.email %></p>
+      <% if like_finder(current_user, post) %>
+        <p><%= link_to 'Not like it', like_path(like_finder(current_user, post)), method: :delete %></p>
+      <% else %>
+        <p><%= link_to 'like it', likes_path(like: {post_id: post.id, user_id: current_user.id}), method: :post %></p>
+      <% end %>
+      <p><small><strong>Likes</strong></small><p>
+        <p><small><%= post.likes.size %></small></p>
+      <p><small><strong>Comments</strong></small><p>
+      <p><small><ul>
+        <% post.comments.order(created_at: :desc).each do |comment| %>
+          <li><%= comment.user.email %>:<br>
+              <%= comment.body %></li>
+        <% end %>
+        </ul>
+        <%= form_with model: @comment, local: true do |f| %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.text_area :body %>
+        <%= f.submit 'Comment' %>
+      <% end %>
+      </small></p>
     </li>
   <% end %>
 </ul>
