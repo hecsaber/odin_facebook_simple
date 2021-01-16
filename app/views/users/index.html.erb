@@ -6,7 +6,7 @@
     <%= link_to 'Request', friendships_path(:friendship => { :user_id => current_user, :friend_id => user, :alive => false }), method: :post %>
   <% elsif current_user.inverse_friends.pending.include?(user) %>
     <%= link_to 'Accept', friendship_path(friendship_finder(current_user, user)), method: :patch %>
-  <% elsif current_user.inverse_friends.alive.include?(user) %>
+  <% elsif current_user.inverse_friends.active.include?(user) %>
     <%= link_to 'Delete', friendship_path(friendship_finder(current_user, user)), method: :delete %>
   <% elsif current_user.friends.include?(user) %>
     <%= link_to 'Delete', friendship_path(friendship_finder(user, current_user)), method: :delete %>

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.where(user: current_user.friends.alive)
-                 .or(Post.where(user_id: current_user.inverse_friends.alive))
+    @posts = Post.where(user: current_user.friends.active)
+                 .or(Post.where(user_id: current_user.inverse_friends.active))
                  .or(Post.where(user: current_user))
                  .order(created_at: :desc)
     @comment = current_user.comments.build
