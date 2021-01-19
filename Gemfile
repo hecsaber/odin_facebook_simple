@@ -32,6 +32,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'figaro', '~> 1.2'
 gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-oauth', '~> 1.1'
+gem 'aws-sdk-s3', '~> 1.87'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
