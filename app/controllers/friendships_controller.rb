@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    @friendship.active = true
+    @friendship.alive = true
 
     if @friendship.save
       flash[:notice] = 'Accepted'
