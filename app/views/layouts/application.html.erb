@@ -14,11 +14,17 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       <div>
-        <p>New friend requests: <%= link_to "#{current_user.inverse_friends.pending.size}", users_path %></p>
+        New friend requests: <%= link_to "#{current_user.inverse_friends.pending.size}", users_path %>
       </div>
       <div>
-        <p><%= link_to 'sign out',  destroy_user_session_path, method: :delete %></p>
+        <%= link_to 'sign out',  destroy_user_session_path, method: :delete %>
       </div>
+      <span>
+        <%= link_to 'edit profile', edit_user_path(current_user) %>
+      </span>
+      <span>
+        <%= link_to 'show profile', user_path(current_user) %>
+      </span>
     <% end %>
     <%= yield %>
   </body>
