@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     if @user.persisted?
       begin
-        UserMailer.with(user: @user).welcome_email.deliver_now
+        UserMailer.with(user: @user).welcome_email.deliver
       rescue
         flash[:notice] = "Signed up, no email sent. #{@user}"
       end
