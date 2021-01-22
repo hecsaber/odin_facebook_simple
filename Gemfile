@@ -33,6 +33,7 @@ gem 'figaro', '~> 1.2'
 gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-oauth', '~> 1.1'
 gem 'aws-sdk-s3', '~> 1.87'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
